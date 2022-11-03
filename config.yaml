@@ -1,0 +1,17 @@
+input-files:
+  - README.md  
+reference-doc: reference.pptx
+output-file: outfile.pptx
+pdf-engine: lualatex
+listings: true
+number-sections: true
+variables:
+  documentclass: ltjsarticle
+  luatexjapresetoptions: ipaex 
+  classoption: pandoc
+  linkcolor: blue
+  titlepage: true
+
+# https://pandoc.org/MANUAL.html#slide-shows
+# https://pandoc-doc-ja.readthedocs.io/ja/latest/users-guide.html
+# https://github.com/jgm/pandoc/issues/5402
