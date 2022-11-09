@@ -5,4 +5,8 @@ RUN tlmgr update --self --all \
     && tlmgr install collection-langjapanese
     # && tlmgr install luatexja
 
-# docker build -t mypandoc .
+LABEL org.opencontainers.image.source=https://github.com/kfjt/pandocjp
+LABEL org.opencontainers.image.description="pandoc jp"
+LABEL org.opencontainers.image.licenses=MIT
+
+# docker build -t ghcr.io/kfjt/pandocjp:latest .
