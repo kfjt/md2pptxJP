@@ -23,8 +23,11 @@ jobs:
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,' -e 's/^v//')
           echo IMAGE_ID=$IMAGE_ID
           echo VERSION=$VERSION
-          docker build --tag $IMAGE_ID:latest --tag $IMAGE_ID:$VERSION .
+          docker build --build-arg VERSION=$VERSION --tag $IMAGE_ID:latest --tag $IMAGE_ID:$VERSION .
       - name: Push Docker Image
         run: |
+          REPO_NAME=$(echo "${{ github.repository }}" | sed -e 's,^[^/]*/,,')
+          IMAGE_ID=$(echo "ghcr.io/$GITHUB_ACTOR/$REPO_NAME" | tr '[A-Z]' '[a-z]')
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,' -e 's/^v//')
           docker push $IMAGE_ID:latest
           docker push $IMAGE_ID:$VERSION
